@@ -1,9 +1,9 @@
 .PHONY: clean run
 
-SOURCE_FILES=testbench.v halfadder.v fulladder.v
+SOURCE_FILES=*.v
 
-processors_test: $(SOURCE_FILES)
-	iverilog src/$(SOURCE_FILES) -o processors_test
+processors_test: $(addprefix src/, $(SOURCE_FILES))
+	iverilog $^ -o processors_test
 
 clean:
 	rm processors_test

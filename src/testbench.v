@@ -1,23 +1,26 @@
-module testbench;
-    reg a, b, cin;
-    wire sum, carry_out;
-    
-    fulladder test_unit (
-        .a(a),
-        .b(b),
-        .carry_in(cin),
-        .sum(sum),
-        .carry_out(carry_out)
+module testbench;    
+    reg [7:0] a_vec, b_vec;
+    reg cin;
+    wire [7:0] sum_vec;
+    wire cout;
+
+    ripple_carry_adder test_unit (
+        .a(a_vec),
+        .b(b_vec),
+        .cin(cin),
+        .sum(sum_vec),
+        .cout(cout)
     );
-    
+
     initial begin
-        a = 1;
-        b = 1;
-        cin = 0;
-        
+        a_vec = 8'b00101010;
+        b_vec = 8'b11110111;
+        //should b 10100001
+        cin = 1'b0;
+
         #10;
-        $display("Output: carry=%b, sum=%b", carry_out, sum);
-        
+        $display("Output: carry=%b, sum=%b", cout, sum_vec);
+
         $finish;
     end
     
