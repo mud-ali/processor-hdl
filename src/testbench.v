@@ -1,18 +1,18 @@
 module testbench;    
-    reg [7:0] a_vec;
+    reg [8:0] a_vec;
     
-    wire [7:0] negative_a;
+    wire [3:0] binary;
 
-    negator ng(
+    dec2bin db(
         a_vec,
-        negative_a
+        binary
     );
 
     initial begin
-        a_vec = 8'b00101010;
+        a_vec = 9'b100000000;
 
         #10;
-        $display("Negative of %b = %b", a_vec, negative_a);
+        $display("binary of %b = %b", a_vec, binary);
 
         $finish;
     end
