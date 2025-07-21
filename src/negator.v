@@ -4,7 +4,7 @@ module negator(
 );
 
     wire[7:0] opposite;
-    reg tmp;
+    wire tmp;
 
     assign opposite = ~value;
     ripple_carry_adder rca(
